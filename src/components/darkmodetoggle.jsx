@@ -44,15 +44,15 @@ const DarkModeToggle = () => {
         className="flex items-center cursor-pointer relative w-14 h-8 bg-gray-300 rounded-full p-1 transition-colors duration-300 ease-in-out dark:bg-blue-600"
       >
         <span
-          className={`absolute left-1 text-yellow-500 transition-opacity duration-300 ease-in-out ${
-            isDarkMode ? "opacity-0" : "opacity-100"
+          className={`absolute left-2 text-yellow-500 transition-opacity duration-300 ease-in-out ${
+            isDarkMode ? "opacity-100" : "opacity-0"
           }`}
         >
           <FontAwesomeIcon icon="sun" />
         </span>
         <span
-          className={`absolute right-1 text-gray-200 transition-opacity duration-300 ease-in-out ${
-            isDarkMode ? "opacity-100" : "opacity-0"
+          className={`absolute right-2 text-gray-400 transition-opacity duration-300 ease-in-out ${
+            isDarkMode ? "opacity-0" : "opacity-100"
           }`}
         >
           <FontAwesomeIcon icon="moon" />
