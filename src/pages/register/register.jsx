@@ -2,14 +2,102 @@ import React, { useState } from "react";
 import logo from "@/assets/logo.svg";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { registerUserApi } from "@/api/api";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const [FirstName, SetFirstName] = useState("");
-  const [LastName, SetLastName] = useState("");
-  const [Email, SetEmail] = useState("");
-  const [Address, SetAddress] = useState("");
-  const [Password, SetPassword] = useState("");
-  const [ConfirmPassword, SetConfirmPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  // handling error;
+  const [firstNameError, setfirstNameError] = useState();
+  const [lastNameError, setlastNameError] = useState();
+  const [emailError, setemailError] = useState();
+  const [addressError, setaddressError] = useState();
+  const [passwordError, setpasswordError] = useState();
+  const [confirmPasswordError, setconfirmPasswordError] = useState();
+
+  const navigate = useNavigate();
+
+  const validate = () => {
+    let isValid = true;
+
+    if (firstName.trim() === "") {
+      setfirstNameError("Please enter first name");
+      isValid = false;
+    } else {
+      setfirstNameError("");
+    }
+
+    if (lastName.trim() === "") {
+      setlastNameError("Please enter last name");
+      isValid = false;
+    } else {
+      setlastNameError("");
+    }
+
+    if (email.trim() === "") {
+      setemailError("Please enter email");
+      isValid = false;
+    } else {
+      setemailError("");
+    }
+
+    if (address.trim() === "") {
+      setaddressError("Please enter address");
+      isValid = false;
+    } else {
+      setaddressError("");
+    }
+
+    if (password.trim() === "") {
+      setpasswordError("Please enter password");
+      isValid = false;
+    } else {
+      setpasswordError("");
+    }
+
+    if (confirmPassword !== password) {
+      setconfirmPasswordError("Passwords does not match!");
+      isValid = false;
+    } else {
+      setconfirmPasswordError("");
+    }
+
+    return isValid;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const isValid = validate();
+    if (!isValid) {
+      return;
+    }
+
+    // Proceed with form submission
+    console.log(email, firstName, lastName, address, password, confirmPassword);
+    const data = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      address: address,
+      password: password,
+    };
+    registerUserApi(data).then((res) => {
+      // sucess message true/false
+      if (res.data.success === true) {
+        toast.success(res.data.message);
+        navigate("/login");
+      } else {
+        toast.error(res.data.message);
+      }
+    });
+  };
 
   return (
     <div className="flex h-screen w-full">
@@ -32,50 +120,71 @@ const Register = () => {
             Login
           </a>
         </Button>
-        {/* <DarkModeToggle /> */}
         <a className="mb-8" />
         <h1 className="text-2xl mb-2 text-white">Create an account</h1>
         <p className="mb-8 text-gray-500">
           Enter your details below to create your account
         </p>
-        <form className="w-2/3">
+        <form className="w-2/3" onSubmit={handleSubmit}>
           <Input
+            onChange={(e) => setEmail(e.target.value)}
             type="email"
             placeholder="name@example.com"
             className="mb-4 text-white"
           />
+          {emailError && <p className="text-red-900">{emailError}</p>}
+
           <div className="flex">
             <Input
-              type="fname"
+              onChange={(e) => setFirstName(e.target.value)}
+              type="text"
               placeholder="First Name"
               className="mb-4 mr-2 text-white"
             />
             <Input
-              type="lname"
+              onChange={(e) => setLastName(e.target.value)}
+              type="text"
               placeholder="Last Name"
               className="mb-4 ml-2 text-white"
             />
           </div>
+          {(firstNameError || lastNameError) && (
+            <p className="text-red-900 mb-1 mt-0">
+              {firstNameError && <span>{firstNameError} </span>}
+              {lastNameError && <span className="ml-40">{lastNameError}</span>}
+            </p>
+          )}
           <Input
+            onChange={(e) => setAddress(e.target.value)}
             type="text"
-            placeholder="Enter your Address."
+            placeholder="Enter your address."
             className="mb-4 text-white"
           />
+          {addressError && <p className="text-red-800">{addressError}</p>}
           <div className="flex">
             <Input
+              onChange={(e) => setPassword(e.target.value)}
               type="password"
-              placeholder="Password."
+              placeholder="Password"
               className="mb-4 mr-2 text-white"
             />
             <Input
+              onChange={(e) => setConfirmPassword(e.target.value)}
               type="password"
-              placeholder="Confirm Password."
+              placeholder="Confirm Password"
               className="mb-4 ml-2 text-white"
             />
           </div>
+          {(passwordError || confirmPasswordError) && (
+            <p className="text-red-900 mb-1 mt-0">
+              {passwordError && <span>{passwordError} </span>}
+              {confirmPasswordError && <span>{confirmPasswordError}</span>}
+            </p>
+          )}
 
-          <Button className="w-full mb-4">Sign In with Email</Button>
-          {/* Remove the GitHub Button */}
+          <Button type="submit" className="w-full mb-4">
+            Sign In with email
+          </Button>
         </form>
         <p className="text-gray-500 text-sm">
           By clicking continue, you agree to our
