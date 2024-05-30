@@ -1,10 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "@/assets/logo.svg";
 import { Input } from "@/components/ui/input";
 import { Button, buttonVariants } from "@/components/ui/button";
 import DarkModeToggle from "@/components/darkmodetoggle";
+import { loginUserApi } from "@/api/api";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  const validate = () => {
+    let isValid = true;
+    if (email === "") {
+      setEmailError("Please enter email");
+      isValid = false;
+    }
+    if (password.trim() === "") {
+      setPasswordError("Please enter password");
+      isValid = false;
+    }
+    return isValid;
+  };
+  const handlemailchange = (e) => {
+    setEmail(e.target.value);
+    setEmailError("");
+  };
+  const handlpasswordchange = (e) => {
+    setPassword(e.target.value);
+    setPasswordError("");
+  };
+  const navigator = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const isValid = validate();
+    if (!isValid) {
+      return;
+    }
+
+    const data = {
+      email: email,
+      password: password,
+    };
+    console.log(data);
+    loginUserApi(data).then((res) => {
+      if (res.data.sucess == true) {
+        toast.success(res.data.message);
+
+        localStorage.setItem("token", res.data.token);
+
+        const currentuser = JSON.stringify(res.data.user);
+        localStorage.setItem("user", currentuser);
+        navigator("/");
+      } else {
+        toast.error(res.data.message);
+      }
+    });
+  };
   return (
     <>
       <div className="flex h-screen w-screen">
@@ -29,14 +86,19 @@ const Login = () => {
               type="email"
               placeholder="name@example.com"
               className="mb-4 text-white"
+              onChange={handlemailchange}
             />
-
+            {emailError && <p className="text-red-900">{emailError}</p>}
             <Input
               type="password"
               placeholder="Enter your passsword"
               className="mb-4 text-white"
+              onChange={handlpasswordchange}
             />
-            <Button className="w-full mb-4">Log In</Button>
+            {passwordError && <p className="text-red-900">{passwordError}</p>}
+            <Button className="w-full mb-4" onClick={handleLogin}>
+              Log In
+            </Button>
             {/* Remove the GitHub Button */}
           </form>
           <div className="flex justify-around">
