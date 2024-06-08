@@ -3,10 +3,12 @@ import logo from "@/assets/logo.svg";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { registerUserApi } from "@/api/api";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "@/components/ui/use-toast";
 
 const Register = () => {
+  const { toast } = useToast();
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -91,10 +93,16 @@ const Register = () => {
     registerUserApi(data).then((res) => {
       // sucess message true/false
       if (res.data.success === true) {
-        toast.success(res.data.message);
-        navigate("/login");
+        toast({
+          title: "Register Sucessfull!",
+          description: "Welcome to Sajilo Sales!",
+        }).then(navigate("/login"));
       } else {
-        toast.error(res.data.message);
+        toast({
+          variant: "destructive",
+          title: "Register Unsucessful!",
+          description: res.data.message,
+        });
       }
     });
   };

@@ -4,10 +4,11 @@ import { Input } from "@/components/ui/input";
 import { Button, buttonVariants } from "@/components/ui/button";
 import DarkModeToggle from "@/components/darkmodetoggle";
 import { loginUserApi } from "@/api/api";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "@/components/ui/use-toast";
 
 const Login = () => {
+  const { toast } = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -50,15 +51,21 @@ const Login = () => {
     console.log(data);
     loginUserApi(data).then((res) => {
       if (res.data.sucess == true) {
-        toast.success(res.data.message);
-
+        toast({
+          title: "Log In Sucessfull!",
+          description: "Welcome to Sajilo Sales!",
+        });
         localStorage.setItem("token", res.data.token);
 
         const currentuser = JSON.stringify(res.data.user);
         localStorage.setItem("user", currentuser);
         navigator("/");
       } else {
-        toast.error(res.data.message);
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "Try again with different credientials",
+        });
       }
     });
   };
