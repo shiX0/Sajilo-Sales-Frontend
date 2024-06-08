@@ -1,5 +1,7 @@
 import { testApi } from "@/api/api";
+import NavBar from "@/components/navbar";
 import React, { useEffect } from "react";
+import Dashboard from "./layout";
 
 function Homepage() {
   useEffect(() => {
@@ -10,9 +12,9 @@ function Homepage() {
     });
   });
   return (
-    <div>
-      <h1>Hello</h1>
-    </div>
+    <>
+      <Dashboard />
+    </>
   );
 }
 
