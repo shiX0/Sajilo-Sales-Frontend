@@ -11,15 +11,7 @@ const Navbar = () => {
       <div className="flex mb-8 mx-auto border-gray-200 dark:border-gray-700 py-4 px-8 justify-between items-center">
         <div>
           <Button variant="link">
-            <NavLink
-              to="/"
-              exact
-              className={` hover:text-gray-200 ${
-                location.pathname === "/"
-                  ? "font-bold text-gray-200"
-                  : "text-gray-400"
-              }`}
-            >
+            <NavLink to="/" exact className="hover:text-gray-200 text-gray-400">
               Overview
             </NavLink>
           </Button>
@@ -27,24 +19,16 @@ const Navbar = () => {
             <NavLink
               to="/Customers"
               exact
-              className={` hover:text-gray-200 ${
-                location.pathname === "/Customers"
-                  ? "font-bold text-gray-200"
-                  : "text-gray-400"
-              }`}
+              className="hover:text-gray-200 text-gray-400"
             >
               Customers
             </NavLink>
           </Button>
           <Button variant="link">
             <NavLink
-              to="/Products"
+              to="/Pproducts"
               exact
-              className={` hover:text-gray-200 ${
-                location.pathname === "/Products"
-                  ? "font-bold text-gray-200"
-                  : "text-gray-400"
-              }`}
+              className="hover:text-gray-200 text-gray-400"
             >
               Products
             </NavLink>
@@ -53,11 +37,7 @@ const Navbar = () => {
             <NavLink
               to="/Orders"
               exact
-              className={` hover:text-gray-200 ${
-                location.pathname === "/Orders"
-                  ? "font-bold text-gray-200"
-                  : "text-gray-400"
-              }`}
+              className="hover:text-gray-200 text-gray-400"
             >
               Orders
             </NavLink>
@@ -66,11 +46,7 @@ const Navbar = () => {
             <NavLink
               to="/Settings"
               exact
-              className={` hover:text-gray-200 ${
-                location.pathname === "/Settings   "
-                  ? "font-bold text-gray-200"
-                  : "text-gray-400"
-              }`}
+              className="hover:text-gray-200 text-gray-400"
             >
               Settings
             </NavLink>
