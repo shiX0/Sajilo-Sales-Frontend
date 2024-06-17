@@ -43,13 +43,11 @@ const Login = () => {
     if (!isValid) {
       return;
     }
-
-    const data = {
-      email: email,
-      password: password,
-    };
-    console.log(data);
-    loginUserApi(data).then((res) => {
+    const Form = new FormData();
+    Form.append("email", email);
+    Form.append("password", password);
+    console.log(Form);
+    loginUserApi(Form).then((res) => {
       if (res.data.sucess == true) {
         toast({
           title: "Log In Sucessfull!",
