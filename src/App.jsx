@@ -13,6 +13,7 @@ import Settings from "./pages/admin/settings";
 import { Toaster } from "@/components/ui/toaster";
 import Dashboard from "./pages/dashboard/dashboard";
 import UserProfile from "./pages/profile/profile";
+import ForgotPassword from "./pages/forgotpassword/forgotPassword";
 
 library.add(faSun, faMoon);
 
@@ -35,6 +36,7 @@ function App() {
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
 
           {/* profile */}
           <Route path="/profile" element={<UserProfile />} />
