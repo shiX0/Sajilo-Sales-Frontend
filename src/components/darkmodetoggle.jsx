@@ -1,5 +1,5 @@
 // src/components/DarkModeToggle.js
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const DarkModeToggle = () => {

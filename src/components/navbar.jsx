@@ -26,7 +26,7 @@ const Navbar = () => {
           </Button>
           <Button variant="link">
             <NavLink
-              to="/Pproducts"
+              to="/Products"
               exact
               className="hover:text-gray-200 text-gray-400"
             >

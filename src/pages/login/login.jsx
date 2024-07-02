@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import logo from "@/assets/logo.svg";
 import { Input } from "@/components/ui/input";
-import { Button, buttonVariants } from "@/components/ui/button";
-import DarkModeToggle from "@/components/darkmodetoggle";
+import { Button } from "@/components/ui/button";
+
 import { loginUserApi } from "@/api/api";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast";
@@ -110,7 +110,9 @@ const Login = () => {
             <Button variant="ghost">
               <a href="/register">Register</a>
             </Button>
-            <Button variant="ghost">Forgot Password?</Button>
+            <Button variant="ghost">
+              <a href="/forgot-password">Forgot Password?</a>
+            </Button>
           </div>
         </div>
       </div>
