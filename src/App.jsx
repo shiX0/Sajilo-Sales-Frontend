@@ -14,6 +14,9 @@ import { Toaster } from "@/components/ui/toaster";
 import Dashboard from "./pages/dashboard/dashboard";
 import UserProfile from "./pages/profile/profile";
 import ForgotPassword from "./pages/forgotpassword/forgotPassword";
+import ClientDashboard from "./pages/client/clientDashboard";
+import ClientPos from "./pages/client/clientPos";
+import ClientProfile from "./pages/client/clientprofile";
 
 library.add(faSun, faMoon);
 
@@ -40,6 +43,13 @@ function App() {
 
           {/* profile */}
           <Route path="/profile" element={<UserProfile />} />
+
+          {/* Client */}
+          <Route path="/client/dashboard" element={<ClientDashboard />}>
+            <Route index element={<ClientPos />} />
+            <Route path="home" element={<ClientPos />} />
+            <Route path="profile" element={<ClientProfile />} />
+          </Route>
         </Routes>
       </Router>
     </>
