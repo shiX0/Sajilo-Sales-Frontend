@@ -26,7 +26,7 @@ const clientDashboard = () => {
             <div className="px-2">
               <div className="py-4">
                 <NavLink
-                  to="/"
+                  to="/client/dashboard"
                   className="t group relative flex justify-center rounded bg-blue-50 px-2 py-1.5 text-blue-700"
                 >
                   <LayoutDashboard />
@@ -59,7 +59,7 @@ const clientDashboard = () => {
                     </svg>
 
                     <span className="invisible absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
-                      Teams
+                      Customers
                     </span>
                   </NavLink>
                 </li>
