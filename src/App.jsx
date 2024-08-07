@@ -1,10 +1,9 @@
 import "./App.css";
-import Login from "./pages/login/login";
+import Login from "./pages/auth/login/login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
-import Register from "./pages/register/register";
-import Customer from "./pages/admin/customer";
+import Register from "./pages/auth/register/register";
 import Home from "./pages/admin/home";
 import Products from "./pages/admin/products";
 import Orders from "./pages/admin/orders";
@@ -13,13 +12,15 @@ import Settings from "./pages/admin/settings";
 import { Toaster } from "@/components/ui/toaster";
 import Dashboard from "./pages/dashboard/dashboard";
 import UserProfile from "./pages/profile/profile";
-import ForgotPassword from "./pages/forgotpassword/forgotPassword";
+import ForgotPassword from "./pages/auth/forgotpassword/forgotPassword";
 import ClientDashboard from "./pages/client/clientDashboard";
 import ClientPos from "./pages/client/clientPos";
 import ClientProfile from "./pages/client/clientprofile";
+import ClientInvoices from "./pages/client/clientInvoices";
+import { ClientCustomers } from "./pages/client/clientCustomers";
+import Customer from "./pages/admin/customer";
 
 library.add(faSun, faMoon);
-
 function App() {
   return (
     <>
@@ -49,6 +50,8 @@ function App() {
             <Route index element={<ClientPos />} />
             <Route path="home" element={<ClientPos />} />
             <Route path="profile" element={<ClientProfile />} />
+            <Route path="invoice" element={<ClientInvoices />} />
+            <Route path="customer" element={<ClientCustomers />} />
           </Route>
         </Routes>
       </Router>
