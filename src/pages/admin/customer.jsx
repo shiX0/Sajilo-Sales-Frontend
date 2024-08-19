@@ -170,12 +170,10 @@ const Customer = () => {
 
   return (
     <div className="flex flex-col h-screen">
-      <header className="bg-primary py-4 px-6">
-        <div className="container mx-auto flex justify-between items-center">
+      <header className="bg-primary py-4 px-6 rounded-sm mb-3">
+        <div className="container mx-auto flex justify-between items-center ">
           <div className="flex items-center gap-4">
-            <h1 className="text-2xl font-bold font-serif">
-              Customer Dashboard
-            </h1>
+            <h1 className="text-3xl font-bold ">Customer Dashboard</h1>
           </div>
           <Button onClick={handleAddCustomer}>Add Customer</Button>
         </div>
