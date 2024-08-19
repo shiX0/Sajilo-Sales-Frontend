@@ -55,12 +55,38 @@ To run this project, you will need to add the following environment variables to
 
 ## Apendix
 
+### Feature 1: Dashboard
+
 ![Dashboard](images/Dashboard.png)
-![Dashboard Dark](images/Dashboard-dark.png)
+
+### Feature 2: Dashboard Dark
+
+![Dashboard Dark](images/Dasboard-dark.png)
+
+### Feature 3: Invoices
+
 ![Invoices](images/Invoices.png)
+
+### Feature 4: Inventory
+
 ![Inventory](images/Inventory.png)
+
+### Feature 5: Customers
+
 ![Customers](images/customers.png)
+
+### Feature 6: Settings
+
 ![Settings](images/Theme.png)
+
+### Feature 7: Cashier
+
 ![Cashier](images/Cashier.png)
+
+### Feature 8: Checkout
+
 ![Checkout](images/Checkout.png)
+
+### Feature 9: Order-print
+
 ![Order-print](images/Order-print.png)
