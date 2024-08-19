@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const baseURL = {
-    baseURL: "http://localhost:5000/api/",
+    baseURL: "https://sajilo-sales-backend.onrender.com/api/",
     withCredentials: true,
 };
 
