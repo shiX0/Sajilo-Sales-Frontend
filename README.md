@@ -1,8 +1,66 @@
-# React + Vite
+# Sajilo Sales - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sajilo Sales is a frontend system for a Point of Sale (POS) application. It provides a user interface for managing sales transactions, products, customer data, and key metrics. The system interacts with a backend via RESTful API endpoints to perform POS functionalities.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Admin
+
+- **View Metrics**: Display key metrics and analytics.
+- **CRUD Products**: Create, read, update, and delete products.
+- **CRUD Orders**: Create, read, update, and delete orders.
+- **CRUD Customers**: Create, read, update, and delete customers.
+
+### Cashier
+
+- **Create Customer**: Add a new customer.
+- **Search Customers**: Search for customers by different feild.
+- **Create Orders**: Create transactions.
+- **Make Checkouts**: checkout the transaction.
+- **View Products** View all the related products and their details.
+
+## Technologies
+
+- **Vite**: Fast build tool for modern web applications.
+- **React**: JavaScript library for building user interfaces.
+- **Shadcn**: Library for compiling and optimizing shaders.
+- **Tailwind CSS**: Utility-first CSS framework for rapidly building custom user interfaces.
+
+## API Integration
+
+Integration with backend services using RESTful API endpoints to perform CRUD operations and other functionalities.
+
+## Future Features
+
+1. **Advanced Analytics**: Implementing more detailed analytics and reporting features to provide deeper insights into sales and customer behavior.
+2. **Multi-language Support**: Adding support for multiple languages to cater to a broader audience.
+3. **QR-based Payment**: Introducing QR-based payment options to streamline the checkout process and enhance user convenience.
+
+## Challenges
+
+1. **State Management**: Managing the state across different components and ensuring data consistency can be challenging, especially with complex user interactions and asynchronous data fetching.
+2. **Performance Optimization**: Ensuring the application remains performant with a large number of products, orders, and customers. This includes optimizing rendering and minimizing unnecessary re-renders.
+3. **Responsive Design**: Creating a responsive design that works seamlessly across various devices and screen sizes, ensuring a good user experience on both desktop and mobile.
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file:
+
+- `BASE_URL`: Base Url of Backend.
+
+## Author
+
+- **Name**: Shishir Sharma
+- **ID**: 220099
+
+## Apendix
+
+![Dashboard](images/Dashboard.png)
+![Dashboard Dark](images/Dashboard-dark.png)
+![Invoices](images/Invoices.png)
+![Inventory](images/Inventory.png)
+![Customers](images/customers.png)
+![Settings](images/Theme.png)
+![Cashier](images/Cashier.png)
+![Checkout](images/Checkout.png)
+![Order-print](images/Order-print.png)
