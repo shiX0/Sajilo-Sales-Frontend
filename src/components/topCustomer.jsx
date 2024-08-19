@@ -6,7 +6,7 @@ const TopCustomer = ({ data }) => {
   console.log(data);
   return (
     <div className="col-span-2">
-      {data[0].name == "N/a" ? (
+      {data[0].name == "N/A" ? (
         <Card className="pb-5 pt-2">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">
