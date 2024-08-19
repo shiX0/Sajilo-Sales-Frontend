@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Card,
   CardContent,
@@ -9,7 +8,6 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import Navbar from "@/components/navbar";
 
 const userDetails = {
   _id: "6658857baa4c3aba62c0a7cd",
@@ -21,11 +19,9 @@ const userDetails = {
   __v: 0,
 };
 
-const storeName = "Big Mart";
-
 const ClientProfile = () => {
   return (
-    <div className="flex flex-col align-middle items-center ">
+    <div className="flex flex-col align-middle items-center w-auto">
       <div className="min-h-screen py-6 sm:py-12">
         <div className="py-3 sm:max-w-xl sm:mx-auto">
           <Card>
@@ -33,7 +29,7 @@ const ClientProfile = () => {
               <CardTitle>Profile</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex space-x-10">
+              <div className="flex space-x-10 ">
                 <div className="relative items-center justify-center mb-6 w-32 h-32">
                   <Avatar>
                     <AvatarImage
@@ -65,7 +61,7 @@ const ClientProfile = () => {
               <div>
                 <h3 className="text-lg font-medium">Admin Information</h3>
                 <CardDescription>
-                  You have administrative privileges to manage the store's
+                  You have administrative privileges to manage the stores
                   operations, including inventory, orders, and user accounts.
                 </CardDescription>
               </div>

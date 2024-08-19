@@ -70,34 +70,34 @@ const Login = () => {
   return (
     <>
       <div className="flex h-screen w-screen">
-        <div className="w-1/2 bg-gray-900 flex flex-col justify-center items-center text-white">
+        <div className="w-1/2 flex flex-col justify-center items-center ">
           <img
             src="https://images.unsplash.com/photo-1602665742701-389671bc40c0?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cG9zfGVufDB8fDB8fHww"
             alt="Placeholder Image"
             className="w-full h-full object-cover"
           />
-          <div className="absolute top-0 left-0 flex justify-center items-center text-white p-8">
+        </div>
+        <div className="w-1/2 flex flex-col justify-center items-center">
+          <div className="flex justify-center items-center  p-8">
             <img src={logo} alt="logo" />
             <h1 className="text-5xl font-bold ml-4 text-gray-700">
               Sajilo Sales
             </h1>
           </div>
-        </div>
-        <div className="w-1/2 bg-black flex flex-col justify-center items-center">
           <a className="mb-8" />
-          <h1 className="text-2xl mb-4 text-white">Login In with email</h1>
+          <h1 className="text-2xl mb-4 font-bold">Login In with email</h1>
           <form className="w-2/3">
             <Input
               type="email"
               placeholder="name@example.com"
-              className="mb-4 text-white"
+              className="mb-4 "
               onChange={handlemailchange}
             />
             {emailError && <p className="text-red-900">{emailError}</p>}
             <Input
               type="password"
               placeholder="Enter your passsword"
-              className="mb-4 text-white"
+              className="mb-4 "
               onChange={handlpasswordchange}
             />
             {passwordError && <p className="text-red-900">{passwordError}</p>}

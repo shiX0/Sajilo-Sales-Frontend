@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink, Outlet, Link } from "react-router-dom";
 import {
   Bell,
@@ -14,7 +13,6 @@ import {
   Users,
 } from "lucide-react";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -69,10 +67,6 @@ function Dashboard() {
               <NavLink to="/customers" className={getNavLinkClass}>
                 <Users className="h-4 w-4" />
                 Customers
-              </NavLink>
-              <NavLink to="/analytics" className={getNavLinkClass}>
-                <LineChart className="h-4 w-4" />
-                Analytics
               </NavLink>
               <NavLink to="/settings" className={getNavLinkClass}>
                 <Settings className="h-4 w-4" />
@@ -189,7 +183,7 @@ function Dashboard() {
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
-                <Link to="/profile">Profile</Link>
+                <NavLink to="/profile">Profile</NavLink>
               </DropdownMenuItem>
               <DropdownMenuItem>Support</DropdownMenuItem>
               <DropdownMenuSeparator />

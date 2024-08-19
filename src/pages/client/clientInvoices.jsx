@@ -1,7 +1,5 @@
-import React from "react";
-
-const clientInvoices = () => {
+const ClientInvoices = () => {
   return <div></div>;
 };
 
-export default clientInvoices;
+export default ClientInvoices;

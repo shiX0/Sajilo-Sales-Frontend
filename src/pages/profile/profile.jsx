@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import Navbar from "@/components/navbar";
 
 const userDetails = {
   _id: "6658857baa4c3aba62c0a7cd",
@@ -21,12 +20,9 @@ const userDetails = {
   __v: 0,
 };
 
-const storeName = "Big Mart";
-
 const AdminProfilePage = () => {
   return (
     <>
-      <Navbar />
       <div className="min-h-screen py-6 flex flex-col sm:py-12">
         <div className="py-3 sm:max-w-xl sm:mx-auto">
           <Card>
