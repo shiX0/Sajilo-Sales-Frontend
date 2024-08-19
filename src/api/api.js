@@ -44,6 +44,7 @@ export const customerApi = {
     getAll: (params) => Api.get("customer", { params }),
     getById: (id) => Api.get(`customer/${id}`),
     getAnalytics: () => Api.get("customer/analytics"),
+    search: (data) => Api.get("customer/search/", { params: data }),
     update: (id, data) => Api.put(`customer/update/${id}`, data),
     delete: (id) => Api.delete(`customer/delete/${id}`),
 };
@@ -67,6 +68,9 @@ export const createProductApi = (data) => ApiFormData.post("product/create", dat
 // Get a Single Product by ID
 export const getProductByIdApi = (id) => Api.get(`product/${id}`);
 // Updatea Product by ID
-export const updateProductApi = (id, data) => ApiFormData.put(`product/update/${id}`, data)
+export const updateProductApi = (id, data) => ApiFormData.put(`product/${id}`, data)
 // Delete a Product by ID
-export const deleteProductByIdApi = (id) => Api.delete(`product/delete/${id}`);
+export const deleteProductByIdApi = (id) => Api.delete(`product/${id}`);
+
+// dashboard
+export const getMetrics = () => Api.get('metrics/');
