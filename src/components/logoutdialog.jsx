@@ -9,8 +9,9 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { LogOut } from "lucide-react";
 
-const LogoutDialog = () => {
+const LogoutDialog = ({ text = true }) => {
   const handleLogout = () => {
     localStorage.clear();
     window.location.href = "/login";
@@ -18,7 +19,7 @@ const LogoutDialog = () => {
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger>Log Out</AlertDialogTrigger>
+      <AlertDialogTrigger>{text ? "Log Out" : <LogOut />}</AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Confirm Logout</AlertDialogTitle>

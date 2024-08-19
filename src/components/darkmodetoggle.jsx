@@ -1,69 +1,47 @@
-// src/components/DarkModeToggle.js
-import { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+import { Sun, Moon } from "lucide-react";
+import { Toggle } from "@radix-ui/react-toggle";
+import { useEffect } from "react";
 
 const DarkModeToggle = () => {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    try {
-      const storedValue = localStorage.getItem("darkMode");
-      return storedValue !== null ? JSON.parse(storedValue) : false;
-    } catch (error) {
-      console.error("Error loading dark mode state from localStorage:", error);
-      return false;
-    }
-  });
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    try {
-      if (isDarkMode) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-      localStorage.setItem("darkMode", JSON.stringify(isDarkMode));
-    } catch (error) {
-      console.error("Error saving dark mode state to localStorage:", error);
+    const storedValue = localStorage.getItem("darkMode");
+    const initialIsDarkMode =
+      storedValue !== null ? JSON.parse(storedValue) : false;
+    setIsDarkMode(initialIsDarkMode);
+
+    if (initialIsDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
     }
-  }, [isDarkMode]);
+  }, []);
 
   const toggleDarkMode = () => {
-    setIsDarkMode((prevDarkMode) => !prevDarkMode);
+    const newIsDarkMode = !isDarkMode;
+    setIsDarkMode(newIsDarkMode);
+    localStorage.setItem("darkMode", JSON.stringify(newIsDarkMode));
+
+    if (newIsDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   };
 
   return (
-    <div className="flex items-center justify-center">
-      <input
-        type="checkbox"
-        id="toggle"
-        className="sr-only"
-        checked={isDarkMode}
-        onChange={toggleDarkMode}
-      />
-      <label
-        htmlFor="toggle"
-        className="flex items-center cursor-pointer relative w-14 h-8 bg-gray-300 rounded-full p-1 transition-colors duration-300 ease-in-out dark:bg-blue-600"
-      >
-        <span
-          className={`absolute left-2 text-yellow-500 transition-opacity duration-300 ease-in-out ${
-            isDarkMode ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <FontAwesomeIcon icon="sun" />
-        </span>
-        <span
-          className={`absolute right-2 text-gray-400 transition-opacity duration-300 ease-in-out ${
-            isDarkMode ? "opacity-0" : "opacity-100"
-          }`}
-        >
-          <FontAwesomeIcon icon="moon" />
-        </span>
-        <span
-          className={`w-6 h-6 bg-white rounded-full shadow-md transform transition-transform duration-300 ease-in-out ${
-            isDarkMode ? "translate-x-6" : ""
-          }`}
-        ></span>
-      </label>
-    </div>
+    <Toggle
+      className="bg-gray-200 dark:bg-gray-700 p-2 rounded-full cursor-pointer"
+      onClick={toggleDarkMode}
+    >
+      {isDarkMode ? (
+        <Moon className="text-gray-700 dark:text-gray-200" size={24} />
+      ) : (
+        <Sun className="text-gray-700 dark:text-gray-200" size={24} />
+      )}
+    </Toggle>
   );
 };
 

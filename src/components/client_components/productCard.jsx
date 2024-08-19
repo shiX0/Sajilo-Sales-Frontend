@@ -1,6 +1,4 @@
-import React from "react";
-
-// eslint-disable-next-line react/prop-types
+/* eslint-disable react/prop-types */
 const ProductCard = ({ product }) => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
   return (

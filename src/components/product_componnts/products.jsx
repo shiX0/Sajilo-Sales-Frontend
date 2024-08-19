@@ -31,9 +31,11 @@ import { Button } from "../ui/button";
 import { getAllProductApi } from "@/api/api";
 
 import DeleteDialog from "./deleteProduct";
+import { useNavigate } from "react-router-dom";
 
 const ProductTable = () => {
   const [products, setProducts] = useState([]);
+  const navigator = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -65,10 +67,11 @@ const ProductTable = () => {
     setCurrentPage((prev) => prev + 1);
   };
 
-  const handleEdit = (productId) => {
-    // Edit product logic goes here
-    console.log(`Edit product with ID: ${productId}`);
-  };
+  // const handleEdit = (product) => {
+  //   <ProductDialog product={product} />;
+  //   // Edit product logic goes here
+  //   // console.log(`Edit product with ID: ${productId}`);
+  // };
 
   if (products.length === 0 && currentPage === 1) {
     return <NoProducts />;
@@ -125,7 +128,10 @@ const ProductTable = () => {
                 <TableBody>
                   {Array.isArray(products) &&
                     products.map((product) => (
-                      <TableRow key={product._id}>
+                      <TableRow
+                        key={product._id}
+                        onClick={() => navigator(`/products/${product._id}`)}
+                      >
                         {/* <TableCell>{product._id}</TableCell> */}
                         <TableCell>
                           <img
@@ -141,7 +147,7 @@ const ProductTable = () => {
                         {/* <TableCell>{product.unit}</TableCell> */}
                         <TableCell>{product.price}</TableCell>
                         <TableCell>{product.quantity}</TableCell>
-                        {/* <TableCell>{product.brand}</TableCell> */}
+                        <TableCell>{product.brand}</TableCell>
                         {/* <TableCell>{product.sku}</TableCell> */}
                         {/* <TableCell>{product.tags.join(", ")}</TableCell> */}
                         {/* <TableCell> */}
@@ -157,9 +163,9 @@ const ProductTable = () => {
                             </DropdownMenuTrigger>
                             <DropdownMenuContent>
                               <DropdownMenuItem
-                                onSelect={() => handleEdit(product._id)}
+                                onSelect={(e) => e.preventDefault()}
                               >
-                                Edit
+                                edit
                               </DropdownMenuItem>
                               <DropdownMenuItem
                                 onSelect={(e) => e.preventDefault()}
